@@ -33,10 +33,10 @@ function createTask (title, description, dueDate, priority, notes, checklist) {
         };
 }
 
-function createProject (title, description, tasks) {
+function createProject (title, description) {
     const projectTitle = title;
     const projectDescription = description;
-    const projectTasks = tasks;
+    const projectTasks = [];
 
     const getTitle = () => projectTitle;
     const setTitle = (newTitle) => this.projectTitle = newTitle;
