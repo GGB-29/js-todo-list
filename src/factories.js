@@ -4,13 +4,13 @@ function createTask (title, description, dueDate) {
     const taskDueDate = dueDate;
 
     const getTitle = () => taskTitle;
-    const setTitle = (newTitle) => this.taskTitle = newTitle;
+    const setTitle = (newTitle) => { taskTitle = newTitle; };
 
     const getDescription = () => taskDescription;
-    const setDescription = (newDescription) => this.taskDescription = newDescription;
+    const setDescription = (newDescription) => { taskDescription = newDescription; };
 
     const getDueDate = () => taskDueDate;
-    const setDueDate = (newDueDate) => this.taskDueDate = newDueDate;
+    const setDueDate = (newDueDate) => { taskDueDate = newDueDate; };
 
     return {getTitle, setTitle, 
             getDescription, setDescription, 
@@ -21,16 +21,17 @@ function createTask (title, description, dueDate) {
 function createProject (title, description) {
     const projectTitle = title;
     const projectDescription = description;
-    const projectTasks = [];
+    let projectTasks = [];
 
     const getTitle = () => projectTitle;
-    const setTitle = (newTitle) => this.projectTitle = newTitle;
+    const setTitle = (newTitle) => { projectTitle = newTitle; };
+
 
     const getDescription = () => projectDescription;
-    const setDescription = (newDescription) => this.projectDescription = newDescription;
+    const setDescription = (newDescription) => { projectDescription = newDescription; };
 
     const getTasks = () => projectTasks;
-    const setTasks = (newTasks) => this.projectTasks = newTasks;
+    const setTasks = (newTasks) => { projectTasks = newTasks; };
 
     return {getTitle, setTitle, 
             getDescription, setDescription, 
