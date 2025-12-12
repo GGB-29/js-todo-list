@@ -14,7 +14,7 @@
     </header>
     <div class="content">
         <div class="balloon-container">
-            <img class="happy balloon" src="assets/happy-balloon.gif">
+            <img class="happy balloon hidden" src="assets/happy-balloon.gif">
             <img class="stressed balloon hidden" src="assets/stressed-balloon.gif">
             <img class="angry balloon hidden" src="assets/angry-balloon.gif">
             <div class="project-form-container hidden">
@@ -28,6 +28,29 @@
                         <div class="input-container">
                             <label for="project-description">Description</label>
                             <textarea rows="3" id="project-description" name="project-description"></textarea>
+                        </div>
+                    </div>
+                    <div id="footer">
+                        <button class="create-project-button" type="button">Create Project</button>
+                        <button class="cancel-button" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="task-form-container">
+                <div class="task-form">
+                    <div class="text-inputs-container">
+                        <div class="form-title">New Task</div>
+                        <div class="input-container">
+                            <label for="task-name">Task Name</label>
+                            <input required type="text" id="task-name" name="task-name">
+                        </div>
+                        <div class="input-container">
+                            <label for="task-description">Description</label>
+                            <textarea id="task-description" name="task-description"></textarea>
+                        </div>
+                        <div class="input-container">
+                            <label for="due-date">Due Date</label>
+                            <input required type="text" id="due date" name="due-date">
                         </div>
                     </div>
                     <div id="footer">

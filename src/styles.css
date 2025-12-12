@@ -62,7 +62,8 @@ nav {
 }
 
 .balloon, 
-.project-form-container {
+.project-form-container, 
+.task-form-container {
     box-sizing: border-box;
     width: 900px;
     height: 450px;
@@ -111,7 +112,8 @@ nav {
     color: var(--dark-purple);
 }
 
-.project-form-container {
+.project-form-container, 
+.task-form-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -121,7 +123,8 @@ nav {
     background-color: rgb(238, 210, 234);
 }
 
-.project-form {
+.project-form, 
+.task-form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -146,7 +149,7 @@ nav {
 }
 
 .text-inputs-container input, 
- textarea#project-description {
+ textarea {
 	margin: 10px 0 0;
 	width: 600px;
     font-size: 1.2rem;
@@ -155,14 +158,20 @@ nav {
 	border-radius: 0.5vh;
 }
 
-textarea#project-description {
+textarea {
     padding: 10px;
     resize: none;
     height: 120px;
+    font-size: 1rem;
+    width: 600px;
+}
+
+textarea#task-description {
+    height: 1lh;
 }
 
 .text-inputs-container input:focus, 
-textarea#project-description:focus {
+textarea:focus {
 	appearance: none;
 	border: 1px solid rgb(71, 71, 212);
 	outline: 1px solid rgb(18, 136, 190);
@@ -196,7 +205,8 @@ label {
     gap: 300px;
 }
 
-div.project-form button {
+div.project-form button, 
+div.task-form button {
 	all:unset;
 	cursor: pointer;
 
@@ -210,6 +220,7 @@ div.project-form button {
 	font-weight: bold;
 }
 
-div.project-form button:hover {
+div.project-form button:hover, 
+div.task-form button:hover {
 	background-color: var(--light-purple);
 }

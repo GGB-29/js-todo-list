@@ -1,10 +1,7 @@
-function createTask (title, description, dueDate, priority, notes, checklist) {
+function createTask (title, description, dueDate) {
     const taskTitle = title;
     const taskDescription = description;
     const taskDueDate = dueDate;
-    const taskPriority = priority;
-    const taskNotes = notes;
-    const taskChecklist = checklist;
 
     const getTitle = () => taskTitle;
     const setTitle = (newTitle) => this.taskTitle = newTitle;
@@ -15,21 +12,9 @@ function createTask (title, description, dueDate, priority, notes, checklist) {
     const getDueDate = () => taskDueDate;
     const setDueDate = (newDueDate) => this.taskDueDate = newDueDate;
 
-    const getPriority= () => taskPriority;
-    const setPriority = (newPriority) => this.taskPriority = newPriority;
-
-    const getNotes = () => taskNotes;
-    const setNotes = (newNotes) => this.taskNotes = newNotes;
-
-    const getChecklist = () => taskChecklist;
-    const setChecklist = (newChecklist) => this.taskChecklist = newChecklist;
-
     return {getTitle, setTitle, 
             getDescription, setDescription, 
-            getDueDate, setDueDate, 
-            getPriority, setPriority, 
-            getNotes, setNotes, 
-            getChecklist, setChecklist
+            getDueDate, setDueDate
         };
 }
 
