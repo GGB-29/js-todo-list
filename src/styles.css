@@ -49,6 +49,7 @@ nav {
     font-family: 'pixelFont';
     color: var(--dark-purple);
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .icon {
@@ -59,7 +60,8 @@ nav {
 
 .balloon, 
 .project-form-container, 
-.task-form-container {
+.task-form-container, 
+.tasks-sub-container {
     box-sizing: border-box;
     width: 900px;
     height: 450px;
@@ -77,35 +79,53 @@ nav {
 .tasks-container {
     padding: 20px 0 0 25px;
     display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.project {
+.tasks-sub-container {
+    background-color: rgb(238, 210, 234);
+}
+
+.project,
+.task {
     height: 80px;
     width: 120px;
 }
 
-.project-item {
+.project-item, 
+.task-item {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.project-item:hover img{
+.project-item:hover img, 
+.task-item:hover img {
     filter: invert(12%) sepia(76%) hue-rotate(260deg) saturate(2000%) brightness(92%) contrast(100%);
 }
-.project-item:hover div{
+.project-item:hover div, 
+.task-item:hover div {
     text-decoration: underline;
     text-decoration-color: rgb(184, 34, 221);
     text-decoration-thickness: 2px;
 }
 
-.project-title {
+.project-title, 
+.task-title {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: -20px;
     color: var(--dark-purple);
+}
+
+.project-title {
+    margin-top: -20px;
+}
+
+.task-title {
+    margin-top: -10px;
 }
 
 .project-form-container, 
@@ -135,6 +155,13 @@ nav {
     font-size: calc(1rem + 0.5vw);
 	font-weight: bold;
 	padding: 0 0 1vh 0;
+}
+
+.tasks-sub-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 input {

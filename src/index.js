@@ -18,3 +18,6 @@ newTaskButton.addEventListener('click', () => {
 
     createTaskForm();
 });
+
+let title = document.querySelector('.logo');
+title.addEventListener('click', () => updateBalloonImage());

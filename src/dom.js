@@ -3,6 +3,7 @@ import folderIcon from './assets/icons/folder.svg';
 import happyBalloon from './assets/happy-balloon.gif';
 import stressedBalloon from './assets/stressed-balloon.gif';
 import angryBalloon from './assets/angry-balloon.gif';
+import fileIcon from './assets/icons/file-document.svg';
 import { parse } from "date-fns";
 
 let projectCount = 0;
@@ -111,6 +112,8 @@ function createProjectForm() {
         const projectContainer = document.querySelector('.tasks-container');
         projectContainer.appendChild(newProjectContainer);
 
+        newProjectContainer.addEventListener('click', () => showTasks(newProject));
+
         newProjectName.value = '';
         newProjectDescription.value = '';
         document.querySelector('.balloon-container').innerHTML='';
@@ -191,10 +194,10 @@ function createTaskForm() {
         let project = document.querySelector('#task-project');
         let projectObj = projects.find(p => p.getTitle() === project.value);
         if (projectObj) {
-            projectObj.setTasks(projectObj.getTasks().push(newTask));
+            projectObj.getTasks().push(newTask);
         } else {
             let newProject = createProject(project.value, "");
-            newProject.setTasks(newProject.getTasks().push(newTask));
+            newProject.getTasks().push(newTask);
 
             const newProjectContainer = document.createElement('div');
             newProjectContainer.classList.add('project-item');
@@ -212,6 +215,7 @@ function createTaskForm() {
             projectContainer.appendChild(newProjectContainer);
 
             projects.push(newProject);
+            newProjectContainer.addEventListener('click', () => showTasks(newProject));
         }
 
         tasks.push(newTask);
@@ -258,6 +262,30 @@ function updateBalloonImage() {
     let newBalloon = createBalloon(balloonType, 'balloon');
     content.appendChild(newBalloon);
 
+}
+
+function showTasks (project) {
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("tasks-container", "tasks-sub-container");
+    let content = document.querySelector('.balloon-container');
+    content.innerHTML='';
+    content.appendChild(taskContainer);
+
+
+    for (let task of project.getTasks()) {
+        const newTaskContainer = document.createElement('div');
+        newTaskContainer.classList.add('task-item');
+        const newTaskIcon = document.createElement('img');
+        newTaskIcon.src = fileIcon;
+        newTaskIcon.classList.add('icon', 'task');
+        const taskTitleDiv = document.createElement('div');
+        taskTitleDiv.classList.add('task-title');
+        taskTitleDiv.textContent = task.getTitle();
+        newTaskContainer.appendChild(newTaskIcon);
+        newTaskContainer.appendChild(taskTitleDiv);
+        const taskContainer = document.querySelector('.tasks-sub-container');
+        taskContainer.appendChild(newTaskContainer);
+    }
 }
 
 export {createBalloon, createProjectForm, createTaskForm, updateBalloonImage};

@@ -30,7 +30,7 @@ function createProject (title, description) {
     const getDescription = () => projectDescription;
     const setDescription = (newDescription) => { projectDescription = newDescription; };
 
-    const getTasks = () => projectTasks;
+    const getTasks = () => {return projectTasks;};
     const setTasks = (newTasks) => { projectTasks = newTasks; };
 
     return {getTitle, setTitle, 
