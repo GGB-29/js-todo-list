@@ -251,3 +251,27 @@ div.project-form button:hover,
 div.task-form button:hover {
 	background-color: var(--light-purple);
 }
+
+.task-info-container {
+    padding: 20px;
+    white-space: pre-line;
+    font-size: 2rem;
+    font-family: monospace;
+    font-weight: 900;
+    line-height: 2.5rem;
+}
+
+.overdue {
+    background-color: rgb(209, 79, 79) !important;
+    border: 1px solid red;
+}
+
+.not-overdue {
+    background-color: rgb(123, 224, 123);
+    border: 1px solid green;
+}
+
+.overdue-text {
+    color: white;
+    text-shadow: 0 0 4px orange;
+}

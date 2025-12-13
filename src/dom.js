@@ -103,6 +103,7 @@ function createProjectForm() {
         projectCount++;
         const newProjectIcon = document.createElement('img');
         newProjectIcon.src = folderIcon;
+        newProjectIcon.title = newProjectDescription.value;
         newProjectIcon.classList.add('icon', 'project');
         const projectTitleDiv = document.createElement('div');
         projectTitleDiv.classList.add('project-title');
@@ -284,8 +285,41 @@ function showTasks (project) {
         newTaskContainer.appendChild(newTaskIcon);
         newTaskContainer.appendChild(taskTitleDiv);
         const taskContainer = document.querySelector('.tasks-sub-container');
+        
+        newTaskContainer.addEventListener('click', () => {
+            showTaskInfo(task);
+        });
+        
         taskContainer.appendChild(newTaskContainer);
     }
 }
+
+function showTaskInfo(task) {
+    const taskInfoContainer = document.createElement("div");
+    taskInfoContainer.classList.add("tasks-sub-container", "task-info-container");
+
+    taskInfoContainer.textContent =
+        task.getTitle() + "\n" +
+        task.getDescription() + "\n" +
+        "Due: " + task.getDueDate().toString();
+
+    const dueDate = new Date(task.getDueDate());
+    const today = new Date();
+
+    if (dueDate < today) {
+        taskInfoContainer.classList.add("overdue");
+        let overdue = document.createElement('div');
+        overdue.classList.add('overdue-text');
+        overdue.textContent = 'OVERDUE';
+        taskInfoContainer.appendChild(overdue);
+    } else {
+        taskInfoContainer.classList.add("not-overdue");
+    }
+
+    const content = document.querySelector('.balloon-container');
+    content.innerHTML = '';
+    content.appendChild(taskInfoContainer);
+}
+
 
 export {createBalloon, createProjectForm, createTaskForm, updateBalloonImage};
