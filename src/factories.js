@@ -1,7 +1,14 @@
+import { parseISO } from "date-fns";
+
 function createTask (title, description, dueDate) {
-    const taskTitle = title;
-    const taskDescription = description;
-    const taskDueDate = dueDate;
+    let taskTitle = title;
+    let taskDescription = description;
+    let taskDueDate = dueDate instanceof Date ? dueDate : parseISO(dueDate);
+
+    if (isNaN(taskDueDate)) {
+        console.error("Invalid due date:", dueDate);
+        taskDueDate = new Date();
+    }
 
     const getTitle = () => taskTitle;
     const setTitle = (newTitle) => { taskTitle = newTitle; };
@@ -10,17 +17,23 @@ function createTask (title, description, dueDate) {
     const setDescription = (newDescription) => { taskDescription = newDescription; };
 
     const getDueDate = () => taskDueDate;
-    const setDueDate = (newDueDate) => { taskDueDate = newDueDate; };
+    const setDueDate = (newDueDate) => { taskDueDate = newDueDate instanceof Date ? newDueDate : parseISO(newDueDate); };
+
+    const toJSON = () => ({
+        title: taskTitle, 
+        description: taskDescription, 
+        dueDate: taskDueDate.toISOString()
+    });
 
     return {getTitle, setTitle, 
             getDescription, setDescription, 
-            getDueDate, setDueDate
+            getDueDate, setDueDate, toJSON
         };
 }
 
 function createProject (title, description) {
-    const projectTitle = title;
-    const projectDescription = description;
+    let projectTitle = title;
+    let projectDescription = description;
     let projectTasks = [];
 
     const getTitle = () => projectTitle;
@@ -33,9 +46,15 @@ function createProject (title, description) {
     const getTasks = () => {return projectTasks;};
     const setTasks = (newTasks) => { projectTasks = newTasks; };
 
+    const toJSON = () => ({
+        title: projectTitle, 
+        description: projectDescription, 
+        tasks: projectTasks.map(task => task.toJSON())
+    });
+
     return {getTitle, setTitle, 
             getDescription, setDescription, 
-            getTasks, setTasks
+            getTasks, setTasks, toJSON
     };
 }
 
