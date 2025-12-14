@@ -16,6 +16,28 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.gif$/,
+                use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[hash].[ext]',
+                            },
+                        },
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 10000, // Inlines files smaller than 10KB as DataURLs
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.css$/i, 
                 use: ["style-loader", "css-loader"], 
             }, 
